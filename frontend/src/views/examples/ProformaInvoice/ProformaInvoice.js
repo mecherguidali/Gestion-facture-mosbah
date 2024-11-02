@@ -86,7 +86,7 @@ const ProformaInvoice = () => {
 
     const fetchInvoices = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/invoices/${currentUserId}`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/invoices/${currentUserId}`, {
                 params: {
                     type: selectedType || undefined,
                     status: selectedStatus || undefined,
@@ -130,7 +130,7 @@ const ProformaInvoice = () => {
 
     const fetchClients = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/client', {
+            const response = await axios.get('${process.env.REACT_APP_API_URL}/api/client', {
                 params: { createdBy: currentUserId }
             });
             setClients(response.data);
@@ -142,7 +142,7 @@ const ProformaInvoice = () => {
 
     const fetchTaxes = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/taxes", { params: { createdBy: currentUserId } });
+            const response = await axios.get("${process.env.REACT_APP_API_URL}/api/taxes", { params: { createdBy: currentUserId } });
             setTaxe(response.data);
         } catch (error) {
             console.error("Error fetching taxes:", error);
@@ -151,7 +151,7 @@ const ProformaInvoice = () => {
 
     const fetchCurrencies = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/currency", {
+            const response = await axios.get("${process.env.REACT_APP_API_URL}/api/currency", {
                 params: { createdBy: currentUserId },
             });
             setCurrencies(response.data);
@@ -197,7 +197,7 @@ const ProformaInvoice = () => {
 
     const confirmDeleteInvoice = async () => {
         try {
-            await axios.delete(`http://localhost:5000/api/invoices/${invoiceToDelete}`, {
+            await axios.delete(`${process.env.REACT_APP_API_URL}/api/invoices/${invoiceToDelete}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -367,7 +367,7 @@ const ProformaInvoice = () => {
         }
 
         try {
-            const response = await axios.get(`http://localhost:5000/api/invoices/export-multi/pdf?invoiceIds=${invoiceIds}&createdBy=${createdBy}`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/invoices/export-multi/pdf?invoiceIds=${invoiceIds}&createdBy=${createdBy}`, {
                 responseType: 'blob', // Important to specify that the response will be a blob
             });
 

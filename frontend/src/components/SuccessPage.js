@@ -21,7 +21,7 @@ const SuccessPage = () => {
   // Function to verify payment using the Flouci API
   const verifyPayment = async (paymentId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/flouci/confirm/${paymentId}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/flouci/confirm/${paymentId}`);
       setVerificationResult(response.data);  // Store verification result
 
       // Make a request to update the invoice payment once verification is successful
@@ -39,7 +39,7 @@ const SuccessPage = () => {
   // Function to update the invoice payment using your API
   const updateInvoicePayment = async (invoiceId, amount, paymentMethod, createdBy) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/payments/invoice/${invoiceId}`, {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/payments/invoice/${invoiceId}`, {
         amountPaid: amount,
         paymentMethod: paymentMethod,
         createdBy: createdBy

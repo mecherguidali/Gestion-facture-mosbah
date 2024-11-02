@@ -48,7 +48,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
     useEffect(() => {
         const fetchTaxes = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/taxes', {
+                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/taxes', {
                     params: { createdBy: userId, isActive: true }
                 });
                 setTaxOptions(response.data.map(tax => ({
@@ -62,7 +62,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
 
         const fetchClients = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/client', {
+                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/client', {
                     params: { createdBy: userId }
                 });
                 setClientOptions(response.data.map(client => {
@@ -90,7 +90,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
 
         const fetchCurrencies = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/currency', {
+                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/currency', {
                     params: { createdBy: userId }
                 });
                 setCurrencyOptions(response.data.map(currency => ({
@@ -288,7 +288,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
             let paymentStatus = invoice.paidAmount >= invoice.total ? 'Payé' : 'impayé';
 
             // Send the invoice data
-            await axios.put(`http://localhost:5000/api/invoices/invoices/${invoice._id}`, formData, {
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/invoices/invoices/${invoice._id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -297,7 +297,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
 
             // Update payment status if necessary
             if (paymentStatus === 'impayé') {
-                await axios.put(`http://localhost:5000/api/invoices/invoices/${invoice._id}`, {
+                await axios.put(`${process.env.REACT_APP_API_URL}/api/invoices/invoices/${invoice._id}`, {
                     paymentStatus: paymentStatus
                 }, {
                     headers: {
@@ -360,7 +360,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
     };
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/product', {
+            const response = await axios.get('${process.env.REACT_APP_API_URL}/api/product', {
                 params: { createdBy: userId } // Adjust according to your API
             });
             setProductOptions(response.data.map(product => ({

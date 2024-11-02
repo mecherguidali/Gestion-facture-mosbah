@@ -38,7 +38,7 @@ const AddInvoiceModal = ({ isOpen, toggle, refreshInvoices, userId }) => {
     useEffect(() => {
         const fetchTaxes = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/taxes', {
+                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/taxes', {
                     params: { createdBy: userId, isActive: true }
                 });
                 setTaxOptions(response.data.map(tax => ({
@@ -51,7 +51,7 @@ const AddInvoiceModal = ({ isOpen, toggle, refreshInvoices, userId }) => {
         };
         const fetchClients = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/client', {
+                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/client', {
                     params: { createdBy: userId }
                 });
                 setClientOptions(response.data.map(client => {
@@ -79,7 +79,7 @@ const AddInvoiceModal = ({ isOpen, toggle, refreshInvoices, userId }) => {
 
         const fetchCurrencies = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/currency', {
+                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/currency', {
                     params: { createdBy: userId}
                 });
                 setCurrencyOptions(response.data.map(currency => ({
@@ -92,7 +92,7 @@ const AddInvoiceModal = ({ isOpen, toggle, refreshInvoices, userId }) => {
         };
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/product', {
+                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/product', {
                     params: { createdBy: userId } // Adjust according to your API
                 });
                 setProductOptions(response.data.map(product => ({
@@ -163,7 +163,7 @@ const AddInvoiceModal = ({ isOpen, toggle, refreshInvoices, userId }) => {
     
             console.log("Payload being sent:", payload);
     
-            await axios.post('http://localhost:5000/api/invoices', payload);
+            await axios.post('${process.env.REACT_APP_API_URL}/api/invoices', payload);
     
             toast.success('Invoice added successfully', {
                 autoClose: 2000,
@@ -228,7 +228,7 @@ const AddInvoiceModal = ({ isOpen, toggle, refreshInvoices, userId }) => {
     };
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/product', {
+            const response = await axios.get('${process.env.REACT_APP_API_URL}/api/product', {
                 params: { createdBy: userId } // Adjust according to your API
             });
             setProductOptions(response.data.map(product => ({
