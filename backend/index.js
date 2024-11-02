@@ -19,6 +19,7 @@ const payment = require('./routes/PaymentRoutes.js');
 const flouci = require('./routes/flouciPyamentRoutes.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')
+require('dotenv').config();
 var cors = require('cors');
 const passport = require('passport');
 // use it before all route definitions
