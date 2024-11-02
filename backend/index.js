@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const app  = express();
 require('./config/database.js')
 require('./config/passportGoogleAth.js')
-const Admin = require('./models/coreModel/admin.js'); // Adjust the path as necessary
 const adminRouter=require('./routes/adminRoutes.js')
 const authRouteGoogle=require('./routes/authGoogle.js')
 const personRouter=require('./routes/personRoutes.js')
