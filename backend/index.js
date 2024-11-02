@@ -24,7 +24,7 @@ var cors = require('cors');
 const passport = require('passport');
 // use it before all route definitions
 const corsOptions = {
-  origin: 'https://gestion-facture-mosbah.vercel.app', // replace with your frontend URL
+  origin: process.env.BASE_URL, // replace with your frontend URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Allow cookies to be sent
 };
