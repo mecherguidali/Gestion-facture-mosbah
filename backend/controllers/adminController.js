@@ -1,4 +1,6 @@
-const Admin = require('../models/coreModel/admin.js'); // Adjust the path as necessary
+const Admin = require('../models/coreModel/admin.js');
+
+// Adjust the path as necessary
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
