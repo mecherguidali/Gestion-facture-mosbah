@@ -16,7 +16,7 @@ const Depense = require('./routes/DepenseRoutes.js');
 const Currency = require('./routes/currencyRoutes.js');
 const taxRoutes = require('./routes/TaxeRoutes.js');
 const companySettingRoutes = require('./routes/EntrepriseSettingRoutes.js');
-const invoiceRoutes = require('./routes/invoiceRoutes');
+const invoiceRoutes = require('./routes/invoiceRoutes.js');
 const payment = require('./routes/PaymentRoutes.js');
 const flouci = require('./routes/flouciPyamentRoutes.js');
 const session = require('express-session');
@@ -42,7 +42,7 @@ app.use(
  app.use(passport.initialize());
   app.use(passport.session());
 app.use(bodyParser.json());
-app.listen(process.env.PORT,()=>{
+app.listen(8080||process.env.PORT,()=>{
     console.log(`server is running in port ${process.env.PORT}`);
 })
 app.use('/api/',adminRouter);
