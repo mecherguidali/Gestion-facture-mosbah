@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require('mongoose');
 const app  = express();
 require('./config/database.js')
-require('./config/passportGoogleAth.js')
 const adminRouter=require('./routes/adminRoutes.js')
 const authRouteGoogle=require('./routes/authGoogle.js')
 const personRouter=require('./routes/personRoutes.js')
