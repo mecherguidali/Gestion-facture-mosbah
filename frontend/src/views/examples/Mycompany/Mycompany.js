@@ -79,7 +79,7 @@ const CompanyComponent = () => {
 
     const fetchCompany = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/companysetting/getByCreatedBy/${currentUserId}`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/companysetting/getByCreatedBy/${currentUserId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -134,7 +134,7 @@ const CompanyComponent = () => {
               
                 createdBy: currentUserId,
             };
-            await axios.post('http://localhost:5000/api/companysetting/createOrUpdate', companyData, {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/companysetting/createOrUpdate`, companyData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -154,7 +154,7 @@ const CompanyComponent = () => {
             formData.append('logo', logoFile);
 
             try {
-                await axios.post(`http://localhost:5000/api/companysetting/uploadOrUpdateLogo/${currentUserId}`, formData, {
+                await axios.post(`${process.env.REACT_APP_API_URL}/api/companysetting/uploadOrUpdateLogo/${currentUserId}`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                         Authorization: `Bearer ${token}`,
@@ -200,7 +200,7 @@ const CompanyComponent = () => {
                                 {company?.logo && (
                                     <div className="logo-container">
                                         <img
-                                            src={`http://localhost:5000/${company.logo}`}
+                                            src={`${process.env.REACT_APP_API_URL}/${company.logo}`}
                                             alt="Company Logo"
                                             style={{
                                                 borderRadius: '50%',

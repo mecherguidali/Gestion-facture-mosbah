@@ -22,7 +22,12 @@ const MongoStore = require('connect-mongo')
 var cors = require('cors');
 const passport = require('passport');
 // use it before all route definitions
-app.use(cors())
+const corsOptions = {
+  origin: 'https://gestion-facture-mosbah.vercel.app', // replace with your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow cookies to be sent
+};
+app.use(cors(corsOptions))
 const detenv = require('dotenv').config()
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
