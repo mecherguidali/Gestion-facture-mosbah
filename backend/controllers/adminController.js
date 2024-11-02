@@ -1,4 +1,4 @@
-const Admin = require('../models/coreModel/admin.js');
+const Admin = require('../models/coreModel/admin');
 
 // Adjust the path as necessary
 const jwt = require('jsonwebtoken');
