@@ -48,7 +48,7 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
 
   const fetchCompanies = async () => {
     try {
-      const response = await axios.get("${process.env.REACT_APP_API_URL}/api/entreprise");
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/entreprise`);
       const allCompanies = response.data;
       setCompanies(allCompanies);
       const userCompanies = allCompanies.filter(company => company.createdBy === userId);
@@ -83,7 +83,7 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
 
   const checkUniqueness = async () => {
     try {
-      const response = await axios.get("${process.env.REACT_APP_API_URL}/api/people", {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/people`, {
         params: { createdBy: userId }
       });
 
@@ -168,7 +168,7 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
     }
 
     try {
-      const response = await axios.post("${process.env.REACT_APP_API_URL}/api/people", newPerson);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/people`, newPerson);
       refreshPeople();
       toggle();
       resetForm();

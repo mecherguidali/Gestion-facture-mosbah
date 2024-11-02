@@ -30,7 +30,7 @@ const EditProduct = ({ isOpen, toggle, refreshProducts, product, userId }) => {
 
   const fetchCurrencies = async () => {
     try {
-      const response = await axios.get("${process.env.REACT_APP_API_URL}/api/currency", { params: { createdBy: userId } });
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/currency`, { params: { createdBy: userId } });
       setCurrencies(response.data);
     } catch (error) {
       console.error("Error fetching currencies:", error);

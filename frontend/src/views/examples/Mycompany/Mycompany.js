@@ -134,7 +134,7 @@ const CompanyComponent = () => {
               
                 createdBy: currentUserId,
             };
-            await axios.post('${process.env.REACT_APP_API_URL}/api/companysetting/createOrUpdate', companyData, {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/companysetting/createOrUpdate`, companyData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

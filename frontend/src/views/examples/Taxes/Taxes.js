@@ -59,7 +59,7 @@ const Taxes = () => {
 
     const fetchTaxes = async () => {
         try {
-            const response = await axios.get("${process.env.REACT_APP_API_URL}/api/taxes", { params: { createdBy: currentUserId } });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/taxes`, { params: { createdBy: currentUserId } });
             setTaxes(response.data);
         } catch (error) {
             console.error("Error fetching taxes:", error);

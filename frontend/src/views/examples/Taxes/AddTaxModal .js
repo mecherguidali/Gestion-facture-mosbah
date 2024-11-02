@@ -12,7 +12,7 @@ const AddTaxModal = ({ isOpen, toggle, refreshTaxes, userId }) => {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.get("${process.env.REACT_APP_API_URL}/api/taxes");
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/taxes`);
             const existingTaxes = response.data;
 
             if (isDefault) {
@@ -26,7 +26,7 @@ const AddTaxModal = ({ isOpen, toggle, refreshTaxes, userId }) => {
                 }
             }
 
-            await axios.post("${process.env.REACT_APP_API_URL}/api/taxes", {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/taxes`, {
                 name,
                 taxvalue,
                 isActive,

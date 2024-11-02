@@ -78,7 +78,7 @@ const EditPersonModal = ({ isOpen, toggle, person, refreshPeople, refreshCompani
 
   const checkUniqueness = async () => {
     try {
-      const response = await axios.get("${process.env.REACT_APP_API_URL}/api/people", {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/people`, {
         params: { createdBy: userId }
       });
       const userPersons = response.data;

@@ -48,7 +48,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
     useEffect(() => {
         const fetchTaxes = async () => {
             try {
-                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/taxes', {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/taxes`, {
                     params: { createdBy: userId, isActive: true }
                 });
                 setTaxOptions(response.data.map(tax => ({
@@ -62,7 +62,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
 
         const fetchClients = async () => {
             try {
-                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/client', {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/client`, {
                     params: { createdBy: userId }
                 });
                 setClientOptions(response.data.map(client => {
@@ -90,7 +90,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
 
         const fetchCurrencies = async () => {
             try {
-                const response = await axios.get('${process.env.REACT_APP_API_URL}/api/currency', {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/currency`, {
                     params: { createdBy: userId }
                 });
                 setCurrencyOptions(response.data.map(currency => ({
@@ -360,7 +360,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
     };
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('${process.env.REACT_APP_API_URL}/api/product', {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/product`, {
                 params: { createdBy: userId } // Adjust according to your API
             });
             setProductOptions(response.data.map(product => ({

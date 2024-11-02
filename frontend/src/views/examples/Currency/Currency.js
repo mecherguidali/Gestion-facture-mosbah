@@ -57,7 +57,7 @@ const Currencies = () => {
 
     const fetchCurrencies = async () => {
         try {
-            const response = await axios.get("${process.env.REACT_APP_API_URL}/api/currency", {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/currency`, {
                 params: { createdBy: currentUserId },
                 headers: {
                     Authorization: `Bearer ${token}`,

@@ -130,7 +130,7 @@ const ProformaInvoice = () => {
 
     const fetchClients = async () => {
         try {
-            const response = await axios.get('${process.env.REACT_APP_API_URL}/api/client', {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/client`, {
                 params: { createdBy: currentUserId }
             });
             setClients(response.data);
@@ -142,7 +142,7 @@ const ProformaInvoice = () => {
 
     const fetchTaxes = async () => {
         try {
-            const response = await axios.get("${process.env.REACT_APP_API_URL}/api/taxes", { params: { createdBy: currentUserId } });
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/taxes`, { params: { createdBy: currentUserId } });
             setTaxe(response.data);
         } catch (error) {
             console.error("Error fetching taxes:", error);
@@ -151,7 +151,7 @@ const ProformaInvoice = () => {
 
     const fetchCurrencies = async () => {
         try {
-            const response = await axios.get("${process.env.REACT_APP_API_URL}/api/currency", {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/currency`, {
                 params: { createdBy: currentUserId },
             });
             setCurrencies(response.data);
