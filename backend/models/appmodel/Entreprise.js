@@ -6,7 +6,6 @@ const entrepriseSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  mainContact: { type: mongoose.Schema.ObjectId, ref: 'Person', autopopulate: false },
   pays: {
     type: String,
   },
@@ -22,7 +21,7 @@ const entrepriseSchema = new mongoose.Schema({
   },
   createdBy: {
     type: String,
-    required: true
+    required: false
 },
 created: {
     type: Date,
@@ -34,12 +33,12 @@ created: {
   },
   rib: {
     type: String,
-    required: true
+    required: false
    
   },
   fisc: {
     type: String,
-    required: true
+    required: false
    
   }
 });

@@ -30,12 +30,6 @@ const decodeToken = (token) => {
   return payload;
 };
 
-const validatePhoneNumber = (number, countryCode) => {
-  if (!countryCode || !number) return false;
-
-  const phoneNumber = parsePhoneNumberFromString(number, countryCode);
-  return phoneNumber ? phoneNumber.isValid() : false;
-};
 
 const AddCompanyModal = ({ isOpen, toggle, refreshCompany, userId }) => {
   const [nom, setNom] = useState("");
@@ -93,28 +87,16 @@ const AddCompanyModal = ({ isOpen, toggle, refreshCompany, userId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validatePhoneNumber(telephone, pays?.value)) {
-      toast.error('Numéro de téléphone invalide pour le pays sélectionné. Veuillez vérifier le numéro et réessayer', {
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      return;
-    }
 
     const newCompany = {
-      nom,
+      nom: nom ? nom: " ",
       pays: pays ? pays.value : "",
-      telephone,
-      email,
-      siteweb,
+      telephone: telephone ? telephone : " ",
+      email: email ? email:" ",
+      siteweb: siteweb ? siteweb : " ",
       createdBy: userId,
-      mainContact,
-      rib,
-      fisc
+      rib: rib? rib:" ",
+      fisc: fisc ? fisc : " "
     };
 
     try {
@@ -176,7 +158,7 @@ const AddCompanyModal = ({ isOpen, toggle, refreshCompany, userId }) => {
                 value={nom}
                 onChange={(e) => setNom(e.target.value)}
                 placeholder="Entrer nom"
-                required
+                  
               />
             </InputGroup>
           </FormGroup>
@@ -218,7 +200,7 @@ const AddCompanyModal = ({ isOpen, toggle, refreshCompany, userId }) => {
                 value={telephone}
                 onChange={(e) => setTelephone(e.target.value)}
                 placeholder="Entrer téléphone"
-                required
+                  
               />
             </InputGroup>
           </FormGroup>
@@ -236,7 +218,7 @@ const AddCompanyModal = ({ isOpen, toggle, refreshCompany, userId }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Entrer email"
-                required
+                  
               />
             </InputGroup>
           </FormGroup>
@@ -254,7 +236,7 @@ const AddCompanyModal = ({ isOpen, toggle, refreshCompany, userId }) => {
                 value={siteweb}
                 onChange={(e) => setSiteweb(e.target.value)}
                 placeholder="Entrer Siteweb"
-                required
+                  
               />
             </InputGroup>
           </FormGroup>
@@ -277,7 +259,7 @@ const AddCompanyModal = ({ isOpen, toggle, refreshCompany, userId }) => {
                   }
                 }}
                 placeholder="Entrer RIB"
-                required
+                  
                 pattern="\d{20}" 
                 maxLength="20" 
                 title="Le RIB doit comporter exactement 20 chiffres."
@@ -300,7 +282,7 @@ const AddCompanyModal = ({ isOpen, toggle, refreshCompany, userId }) => {
                 value={fisc}
                 onChange={(e) => setFisc(e.target.value)}
                 placeholder="Entrer matricul fiscal"
-                required
+                  
               />
             </InputGroup>
           </FormGroup>

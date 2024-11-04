@@ -24,7 +24,7 @@ var cors = require('cors');
 const passport = require('passport');
 // use it before all route definitions
 const corsOptions = {
-  origin: process.env.BASE_URL, // replace with your frontend URL
+  origin: '*', // replace with your frontend URL
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Allow cookies to be sent
 };
@@ -46,7 +46,7 @@ app.use(
  app.use(passport.initialize());
   app.use(passport.session());
 app.use(bodyParser.json());
-app.listen(8080||process.env.PORT,()=>{
+app.listen(process.env.PORT,()=>{
     console.log(`server is running in port ${process.env.PORT}`);
 })
 app.use('/api/',adminRouter);

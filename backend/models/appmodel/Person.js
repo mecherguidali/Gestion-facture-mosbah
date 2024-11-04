@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const personSchema = new mongoose.Schema({
     prenom: {
         type: String,
-        required: true
+        required: false
     },
     nom: {
         type: String,
-        required: true
+        required: false
     },
     createdBy: {
         type: String,
-        required: true
+        required: false
     },
     created: {
         type: Date,
