@@ -44,7 +44,7 @@ exports.register = async (req, res) => {
       let htmlContent = fs.readFileSync(htmlFilePath, 'utf8');
 
       // Replace placeholders in the HTML file with actual data (e.g., the confirmation link)
-      htmlContent = htmlContent.replace('{{confirmation_link}}', `${process.env.BASE_URL}api/confirm/${token}`);
+      htmlContent = htmlContent.replace('{{confirmation_link}}', `${process.env.BASE_URL}/api/confirm/${token}`);
 
       const mailOptions = {
           from: process.env.USER_MAILER,
