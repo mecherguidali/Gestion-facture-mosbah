@@ -346,18 +346,31 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
 
 
 
-
-    const handleProductChange = (index, selectedOption) => {
+    const handleProductChange = (index, eventOrOption) => {
         const newItems = [...invoice.items];
-        newItems[index] = {
-            article: selectedOption.label, // Assuming you want the product name as the article
-            description: selectedOption.description,
-            quantity: 1, // Default quantity
-            price: selectedOption.price,
-            total: selectedOption.price // Set total based on price initially
-        };
+    
+        if (eventOrOption && eventOrOption.target) {
+          // Si c'est un événement (comme le changement de prix)
+          const { name, value } = eventOrOption.target;
+    
+          if (name.startsWith("product-")) {
+            newItems[index].price = parseFloat(value) || 0;
+            newItems[index].total =
+              newItems[index].price * newItems[index].quantity;
+          }
+        } else if (eventOrOption) {
+          // Sinon, c'est un objet d'option (changement de produit)
+          newItems[index] = {
+            article: eventOrOption.label, // Nom du produit
+            description: eventOrOption.description,
+            quantity: 1, // Quantité par défaut
+            price: eventOrOption.price,
+            total: eventOrOption.price, // Total initial basé sur le prix
+          };
+        }
+    
         setInvoice({ ...invoice, items: newItems });
-    };
+      };
     const fetchProducts = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/product`, {
@@ -530,7 +543,7 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
                 <h5>Services</h5>
                 {invoice.items.map((item, index) => (
                     <Row form key={index} className="align-items-center">
-                        <Col md={5}>
+                        <Col md={3}>
                             <FormGroup>
                                 <Label for={`product-${index}`}>Service</Label>
                                 <Input
@@ -549,6 +562,18 @@ const EditProformaInvoiceModal = ({ isOpen, toggle, invoiceData, refreshInvoices
                             </FormGroup>
                         </Col>
                         <Col md={3}>
+              <FormGroup>
+                <Label for={`product-${index}`}>Prix</Label>
+                <Input
+                  type="number"
+                  name={`product-${index}`}
+                  id={`product-${index}`}
+                  value={item.price}
+                  onChange={(e) => handleProductChange(index, e)}
+                />
+              </FormGroup>
+            </Col>
+                        <Col md={2}>
                             <FormGroup>
                                 <Label for={`quantity-${index}`}>Quantité</Label>
                                 <Input

@@ -2,12 +2,11 @@ const Entreprise = require('../models/appmodel/Entreprise');
 
 // Create a new entreprise
 exports.createEntreprise = async (req, res) => {
-  const { nom, mainContact, pays, telephone, email, siteweb,rib,fisc,createdBy } = req.body;
+  const { nom, pays, telephone, email, siteweb,rib,fisc,createdBy } = req.body;
 
   try {
     const newEntreprise = new Entreprise({
       nom,
-      mainContact,
       pays,
       telephone,
       email,

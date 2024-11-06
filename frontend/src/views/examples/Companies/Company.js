@@ -223,7 +223,6 @@ const Company = () => {
                 <thead className="thead-light">
                   <tr>
                     <th scope="col">Nom</th>
-                    <th scope="col">Contact principal</th>
                     <th scope="col">Pays</th>
                     <th scope="col">Téléphone</th>
                     <th scope="col">Email</th>
@@ -241,7 +240,6 @@ const Company = () => {
                     currentCompanies.map((company) => (
                       <tr key={company._id}>
                         <td>{company.nom}</td>
-                        <td>{getMainContact(company._id)}</td>
                         <td>{countryOptions[company.pays] || company.pays}</td>
                         <td>{company.telephone}</td>
                         <td>{company.email}</td>

@@ -93,7 +93,7 @@ const Persons = () => {
 
   const getCompanyNameById = (id) => {
     const company = companies.find(company => company._id === id);
-    return company ? company.nom : 'Entreprise non trouvée';
+    return company ? company.nom : ' ';
   };
 
   const filteredPeople = people.filter((person) => {
@@ -221,15 +221,13 @@ const Persons = () => {
                   <tbody>
                     {currentPeople.length > 0 ? (
                       currentPeople.map((person) => (
-                        <tr key={person._id}>
+                        <tr key={person._id }>
                           <td>{person.prenom}</td>
                           <td>{person.nom}</td>
                           <td >
-                            {getCompanyNameById(person.entreprise) === 'Entreprise non trouvée' ? (
-                              <span className="fa-solid fa-ban" style={{ fontSize: '20px', color: 'black' }}></span>
-                            ) : (
+                            {
                               getCompanyNameById(person.entreprise)
-                            )}
+                            }
                           </td>
                           <td>{person.pays}</td>
                           <td>{person.telephone}</td>

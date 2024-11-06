@@ -91,31 +91,9 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
 
       const isEmailUnique = !userPersons.some(person => person.email === email);
 
-      if (!isEmailUnique) {
-        toast.error("L'email existe déjà parmi vos contacts. Veuillez utiliser un email différent", {
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        return false;
-      }
-
+      
       const isPhoneUnique = !userPersons.some(person => person.telephone === telephone);
 
-      if (!isPhoneUnique) {
-        toast.error('Le numéro de téléphone existe déjà parmi vos contacts. Veuillez utiliser un numéro de téléphone différent.', {
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        return false;
-      }
 
       return true;
     } catch (error) {
@@ -154,12 +132,12 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
     if (!isUnique) return;
 
     const newPerson = {
-      prenom,
-      nom,
+      prenom : prenom? prenom : " ",
+      nom :nom ? nom :" ",
       pays: pays?.label,
-      telephone,
-      email,
-      cin,
+      telephone : telephone ? telephone : " ",
+      email: email ? email: " ",
+      cin: cin ? cin: " ",
       createdBy: userId
     };
 
@@ -239,7 +217,7 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
                   value={nom}
                   onChange={(e) => setNom(e.target.value)}
                   placeholder="Entrez le nom"
-                  required
+                   
                   style={{ borderLeft: 0, borderRadius: '0 0.25rem 0.25rem 0', transition: 'border-color 0.2s' }}
                   onFocus={(e) => e.target.style.borderColor = '#80bdff'}
                   onBlur={(e) => e.target.style.borderColor = '#ced4da'}
@@ -258,7 +236,7 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
                   value={prenom}
                   onChange={(e) => setPrenom(e.target.value)}
                   placeholder="Entrez le prénom"
-                  required
+                   
                   style={{ borderLeft: 0, borderRadius: '0 0.25rem 0.25rem 0', transition: 'border-color 0.2s' }}
                   onFocus={(e) => e.target.style.borderColor = '#80bdff'}
                   onBlur={(e) => e.target.style.borderColor = '#ced4da'}
@@ -288,7 +266,7 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
                     }
                   }}
                   placeholder="Entrez le CIN"
-                  required
+                   
                   pattern="\d{8}" // Enforces 8 digits
                   maxLength="8" // Restricts the input to 8 characters
                   title="Le CIN doit comporter exactement 8 chiffres."
@@ -357,7 +335,7 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
                   value={telephone}
                   onChange={(e) => setTelephone(e.target.value)}
                   placeholder="Entrez le numéro de téléphone"
-                  required
+                   
                   style={{ borderLeft: 0, borderRadius: '0 0.25rem 0.25rem 0', transition: 'border-color 0.2s' }}
                   onFocus={(e) => e.target.style.borderColor = '#80bdff'}
                   onBlur={(e) => e.target.style.borderColor = '#ced4da'}
@@ -376,7 +354,7 @@ const AddPersonModal = ({ isOpen, toggle, refreshPeople, userId }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Entrez l'adresse e-mail."
-                  required
+                   
                   style={{ borderLeft: 0, borderRadius: '0 0.25rem 0.25rem 0', transition: 'border-color 0.2s' }}
                   onFocus={(e) => e.target.style.borderColor = '#80bdff'}
                   onBlur={(e) => e.target.style.borderColor = '#ced4da'}

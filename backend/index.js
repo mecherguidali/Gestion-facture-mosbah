@@ -24,7 +24,11 @@ var cors = require('cors');
 const passport = require('passport');
 // use it before all route definitions
 const corsOptions = {
+<<<<<<< HEAD
   origin: "*", // replace with your frontend URL
+=======
+  origin: '*', // replace with your frontend URL
+>>>>>>> 00de5b44ac9a9e8377948b20f41e052b2157ed71
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // Allow cookies to be sent
 };
